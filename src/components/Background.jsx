@@ -71,8 +71,10 @@ const Background = () => {
   }, [selectedCountry]);
 
   const onRemoveCity = (cityToRemove) => {
-    setSelectedCities(prevCities => prevCities.filter(city => city !== cityToRemove));
-  }
+    setSelectedCities((prevCities) =>
+      prevCities.filter((city) => city !== cityToRemove)
+    );
+  };
 
   return (
     <>
@@ -82,7 +84,7 @@ const Background = () => {
           style={{ height: "300px", overflow: "hidden" }}
         >
           <img
-            src="/sunny.jpg"
+            src="sunny.jpg"
             alt="Sunny"
             style={{
               width: "100%",
@@ -90,6 +92,7 @@ const Background = () => {
               objectFit: "cover",
             }}
           />
+
           <div className="absolute inset-0 flex flex-col justify-center items-center p-5">
             <div className="flex flex-col justify-end space-y-3">
               <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
@@ -175,7 +178,11 @@ const Background = () => {
       </Drawer>
       <div className="flex flex-wrap">
         {selectedCities.map((city) => (
-          <WeatherCard key={city} selectedCity={city} onRemove={() => onRemoveCity(city)} />
+          <WeatherCard
+            key={city}
+            selectedCity={city}
+            onRemove={() => onRemoveCity(city)}
+          />
         ))}
       </div>
     </>
